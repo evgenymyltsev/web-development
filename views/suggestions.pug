@@ -1,0 +1,14 @@
+extends layout
+block main
+    h1 Предложения
+    ul
+        for suggestion in suggestions
+            li
+                a(href=`/suggestions/${suggestion.id}`)=suggestion.title
+                | (#{suggestion.voters.size})
+                form(method='POST' action=`/suggestions/${suggestion.id}`)
+                    button(type='submit')= suggestion.voters.has(username) ? 'Отменгить голос' : 'Проголосовать'
+
+        form(method='POST')
+            input(type='text' name='title' placeholder='Название курса')
+            button(type='submit') Предложить 

@@ -1,16 +1,10 @@
-doctype html
-html(lang='ru')
-    head
-        meta(charset='utf-8')
-        meta(name="viewport" content="width=device-width, initial-scale=1.0")
-        meta(http-equiv="X-UA-Compatible" content="ie=edge")
-        title Предложение
-        link(rel="stylesheet", href="/styles.css")
-    body
-        if username
-            h1 Привет #{username}
-        else
-            h1 Вход
-            form(method="POST")
-                input(type="text" name="username")
-                button(type="submit") Войти
+extends layout
+block main
+    if username
+        h1 Привет #{username}
+        a(href='/suggestions') Посмотреть список предложений
+    else
+        h1 Вход
+        form(method="POST")
+            input(type="text" name="username")
+            button(type="submit") Войти
